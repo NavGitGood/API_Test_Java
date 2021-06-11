@@ -1,0 +1,20 @@
+url: https://order-pizza-api-python3-7.herokuapp.com/api/orders
+orders:
+  - crust: NORMAL
+    flavor: VEGGIE
+    order_ID: 1
+    size: M
+    table_No: 1
+    timestamp: 2019-12-03T18:21:08.669365
+  - crust: THIN
+    flavor: CHEESE
+    order_ID: 2
+    size: S
+    table_No: 5
+    timestamp: 2019-12-03T18:21:08.708470
+  - crust: NORMAL
+    flavor: CHICKEN-FAJITA
+    order_ID: 3
+    size: L
+    table_No: 3
+    timestamp: 2019-12-03T18:21:08.710006
