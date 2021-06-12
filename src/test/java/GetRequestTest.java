@@ -20,9 +20,9 @@ import static org.testng.Assert.assertEquals;
 public class GetRequestTest {
 
     // using properties files
-    String urlFromProperties = ConfigurationLoader.getPropertyValue("url");
+    String getOrdersURL = ConfigurationLoader.getPropertyValue("url").concat("/orders");
     // using YAML file
-    String urlFromYAML = YAMLLoader.base.getUrl();
+//    String urlFromYAML = YAMLLoader.base.getUrl();
 
     @Test(description = "Assert all the values")
     public void orderValueTest() {
@@ -30,9 +30,9 @@ public class GetRequestTest {
         Map<String, Object> order2 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(1));
         Map<String, Object> order3 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(2));
 
-        Response res = given().relaxedHTTPSValidation().when().get(urlFromYAML);
-        assertEquals(200, res.getStatusCode());
-        String json = res.asString();
+        Response response = given().relaxedHTTPSValidation().when().get(getOrdersURL);
+        assertEquals(200, response.getStatusCode());
+        String json = response.asString();
         JsonPath jp = new JsonPath(json);
         List<HashMap> obj = jp.get("$");
         assertEquals(obj.size(), 3);
@@ -49,8 +49,8 @@ public class GetRequestTest {
         Map<String, Object> order2 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(1));
         Map<String, Object> order3 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(2));
 
-        Response res = given().relaxedHTTPSValidation().when().get(urlFromYAML);
-        String json = res.asString();
+        Response response = given().relaxedHTTPSValidation().when().get(getOrdersURL);
+        String json = response.asString();
         JsonPath jp = new JsonPath(json);
         List<HashMap> obj = jp.get("$");
         assertThat(obj.get(0).keySet().toString(), equalToIgnoringCase(order1.keySet().toString()));
@@ -60,8 +60,8 @@ public class GetRequestTest {
 
     @Test(description = "Assert that Crust for third order is NORMAL ")
     public void orderCrustTest() {
-        Response res = given().relaxedHTTPSValidation().when().get(urlFromYAML);
-        String json = res.asString();
+        Response response = given().relaxedHTTPSValidation().when().get(getOrdersURL);
+        String json = response.asString();
         JsonPath jp = new JsonPath(json);
         List<String> l = jp.get("Crust");
         assertEquals(l.get(2), "NORMAL");
