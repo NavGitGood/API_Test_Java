@@ -12,4 +12,9 @@ public class Helper {
         return mapper.convertValue(toConvert, Map.class);
     }
 
+    public static Map<String, Object> removeKey(String key, Map<String, Object> toUpdate) {
+        toUpdate.remove(key);
+        return toUpdate;
+    }
+
 }
