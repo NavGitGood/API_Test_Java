@@ -24,7 +24,7 @@ public class GetRequestTest {
     // using YAML file
 //    String urlFromYAML = YAMLLoader.base.getUrl();
 
-    @Test(description = "Assert all the values")
+    @Test(description = "Assert three orders to be present", dependsOnMethods = { "postOrder" })
     public void orderValueTest() {
         Map<String, Object> order1 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(0));
         Map<String, Object> order2 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(1));
@@ -58,7 +58,7 @@ public class GetRequestTest {
         assertThat(obj.get(2).keySet().toString(), equalToIgnoringCase(order3.keySet().toString()));
     }
 
-    @Test(description = "Assert that Crust for third order is NORMAL ")
+    @Test(description = "Assert that Crust for third order is NORMAL")
     public void orderCrustTest() {
         Response response = given().relaxedHTTPSValidation().when().get(getOrdersURL);
         String json = response.asString();
