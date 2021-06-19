@@ -24,7 +24,7 @@ public class GetRequestTest {
     // using YAML file
 //    String urlFromYAML = YAMLLoader.base.getUrl();
 
-    @Test(description = "Assert three orders to be present", dependsOnMethods = { "postOrder" })
+    @Test(description = "Assert three orders to be present")
     public void orderValueTest() {
         Map<String, Object> order1 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(0));
         Map<String, Object> order2 = Helper.getMapFromInstance(YAMLLoader.base.getOrders().get(1));
