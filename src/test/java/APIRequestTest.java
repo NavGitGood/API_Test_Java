@@ -23,7 +23,6 @@ public class APIRequestTest {
     Response response;
     String getOrdersURL = ConfigurationLoader.getPropertyValue("url").concat("/orders");
 
-
     public void deleteAllOrders() {
         String deleteOrderURL = ConfigurationLoader.getPropertyValue("url").concat("/orders");
         IntStream.range(1, 10).forEach( order ->
